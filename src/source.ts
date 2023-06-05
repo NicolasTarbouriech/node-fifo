@@ -1,22 +1,29 @@
-import * as mongoose from "mongoose";
-import { model } from "mongoose";
-import { actionSchema, IAction } from "./entity/action.entity";
-
+import mongoose, { connect, connection } from "mongoose";
+import dotenv from 'dotenv';
+import express from "express";
+import userSchema from "./entity/user.entity";
+import actionSchema from "./entity/action.entity";
 export async function run() {
   try {
-    const Action = model<IAction>('Action', actionSchema);
+    const app = express();
+    app.use(express.json());
 
-    const action = new Action({
-      credits: 30,
-      name: 'A'
-    })
+    dotenv.config();
 
-    // Connect the client to the server	(optional starting in v4.7)
-    await mongoose.connect(process.env.DATABASE ||
-      'mongodb+srv://mongodb-user:vNXBObWAlXbs00Kv@atlascluster.1eln5es.mongodb.net/fifo-db?retryWrites=true&w=majority');
+    const connectionString = process.env.DATABASE || 'mongodb+srv://mongodb-user:vNXBObWAlXbs00Kv@atlascluster.1eln5es.mongodb.net/fifo-db?retryWrites=true&w=majority';
 
-    await action.save();
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    await connect(connectionString);
+
+    const User = mongoose.model('User', userSchema);
+    const Action = mongoose.model('Actions', actionSchema);
+
+    await User.createCollection();
+    await Action.createCollection();
+
+    app.listen(3000, () => {
+      console.log('Server listening on port 3000');
+    });
+
   } catch (e) {
     console.error(e);
   }

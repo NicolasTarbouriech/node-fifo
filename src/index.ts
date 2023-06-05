@@ -1,15 +1,11 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import { run } from "./source";
+import router from "./router";
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.get("/api", (req: Request, res: Response) => {
-  let json = {
-    message: 'sq'
-  }
-  res.json(json);
-});
+app.use(router);
 
 app.listen(PORT, () => {
   run().catch(console.dir);

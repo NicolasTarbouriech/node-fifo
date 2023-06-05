@@ -1,17 +1,24 @@
 import { Schema } from "mongoose";
+import { IAction, IActionModel } from "../interface/action.interface";
 
-export interface IAction {
-  name: {
+const actionSchema = new Schema<IAction, IActionModel>({
+  type: {
     type: String,
-    enum : ['A','B', 'C'],
-    default: 'A'
+    enum: ['A', 'B', 'C'],
+    required: true,
   },
-  credits: Number;
-}
-
-export const actionSchema = new Schema<IAction>({
-  name: { type: String, enum: ['A','B', 'C'], default: 'A', required: true },
-  credits: { type: Number, required: true },
+  credits: {
+    type: Number,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-
+export default actionSchema;
