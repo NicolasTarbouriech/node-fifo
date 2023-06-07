@@ -7,7 +7,7 @@ const userRouter = Router();
 // create new user
 userRouter.post('/create', async (req: Request, res: Response) => {
   try {
-    const user = await UserController.createUser(req);
+    const user = await UserController.createUser(req.body);
     res.json(user);
   } catch (error) {
     console.error('Error creating user:', error);
