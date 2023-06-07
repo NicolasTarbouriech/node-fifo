@@ -1,14 +1,16 @@
 import { Request, Response } from "express";
 import { IUser } from "../interface/user.interface";
+import { model } from "mongoose";
+import userSchema from "../model/user.model";
 
-export function getUserMiddleware(req: Request, res: Response, next: Function) {
-  const users: IUser[] = [];
+export async function getUserMiddleware(req: Request, res: Response, next: Function) {
+  const User = model<IUser>('User', userSchema);
   const userId = req.params.userId;
-  console.log(req);
-  const user = users.find((u) => u.id === userId);
-
+  const user = await User.findOne({
+    _id: userId
+  });
   if (!user) {
-    return res.status(404).json({ message: 'User tarbounix not found' });
+    return res.status(404).json({message: 'User with id : ' + userId + 'not found'});
   }
 
   req.body.user = user;

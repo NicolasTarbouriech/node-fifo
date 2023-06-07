@@ -19,6 +19,10 @@ const actionSchema = new Schema<IAction, IActionModel>({
     type: Date,
     default: Date.now,
   },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  }
 });
 
 export default actionSchema;

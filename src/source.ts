@@ -1,8 +1,9 @@
-import mongoose, { connect, connection } from "mongoose";
+import mongoose, { connect } from "mongoose";
 import dotenv from 'dotenv';
 import express from "express";
-import userSchema from "./entity/user.entity";
-import actionSchema from "./entity/action.entity";
+import userSchema from "./model/user.model";
+import actionSchema from "./model/action.model";
+
 export async function run() {
   try {
     const app = express();

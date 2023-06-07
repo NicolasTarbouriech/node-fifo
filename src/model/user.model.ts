@@ -1,6 +1,5 @@
 import { Schema } from "mongoose";
 import { IUser } from "../interface/user.interface";
-import actionSchema from "./action.entity";
 
 const userSchema = new Schema<IUser>({
   id: {
@@ -21,7 +20,8 @@ const userSchema = new Schema<IUser>({
   },
   queue: [
     {
-      type: [actionSchema],
+      type: Schema.Types.ObjectId,
+      ref: "Actions",
       default: []
     },
   ],
