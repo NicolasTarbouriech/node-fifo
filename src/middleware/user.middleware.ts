@@ -1,16 +1,18 @@
 import { Request, Response } from "express";
-import { model } from "mongoose";
-import userSchema from "../entity/user/model/user.model";
-import { IUser } from "../entity/user/interface/user.interface";
+import { findUserById } from "../entity/user/repository/user.repository";
 
-export async function getUserMiddleware(req: Request, res: Response, next: Function) {
-  const User = model<IUser>('User', userSchema);
-  const userId = req.params.userId;
-  const user = await User.findOne({
-    _id: userId
-  });
+export async function getUserMiddleware(
+  req: Request,
+  res: Response,
+  next: Function
+) {
+  const { userId } = req.params;
+  const user = await findUserById(userId);
+
   if (!user) {
-    return res.status(404).json({message: 'User with id : ' + userId + 'not found'});
+    return res
+      .status(404)
+      .json({ message: "User with id : " + userId + "not found" });
   }
 
   req.body.user = user;

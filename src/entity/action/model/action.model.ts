@@ -1,12 +1,16 @@
 import { Schema } from "mongoose";
-import { IAction, IActionModel } from "../interface/action.interface";
-import { TypeAction } from "../../../type/action.type";
+import {
+  actionTypeEnum,
+  IAction,
+  IActionModel,
+} from "../interface/action.interface";
 
-const actionSchema = new Schema<IAction, IActionModel>({
+const actionSchema = new Schema<IAction, IActionModel>(
+  {
     type: {
       type: String,
-      enum: ['A', 'B', 'C'] as TypeAction[],
-      required: true
+      enum: actionTypeEnum,
+      required: true,
     },
     credits: {
       type: Number,
@@ -14,10 +18,11 @@ const actionSchema = new Schema<IAction, IActionModel>({
     },
     owner: {
       type: Schema.Types.ObjectId,
-      ref: "User"
-    }
-  }, {
-    timestamps: true
+      ref: "User",
+    },
+  },
+  {
+    timestamps: true,
   }
 );
 

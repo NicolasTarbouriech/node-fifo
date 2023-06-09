@@ -7,8 +7,8 @@ export async function run() {
   try {
     await connect(connectionString);
 
-    const User = mongoose.model('User', userSchema);
-    const Action = mongoose.model('Actions', actionSchema);
+    const User = mongoose.model("User", userSchema);
+    const Action = mongoose.model("Actions", actionSchema);
 
     await User.createCollection();
     await Action.createCollection();

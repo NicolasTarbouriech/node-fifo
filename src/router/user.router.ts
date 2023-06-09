@@ -5,18 +5,22 @@ import { getUserMiddleware } from "../middleware/user.middleware";
 const userRouter = Router();
 
 // create new user
-userRouter.post('/create', async (req: Request, res: Response) => {
-   return  await UserController.createUser(req.body, res);
+userRouter.post("/create", async (req: Request, res: Response) => {
+  return await UserController.createUser(req.body, res);
 });
 
 // retrieve user
-userRouter.get('/:userId', async (req: Request, res: Response) => {
-    return await UserController.getUser(req, res);
+userRouter.get("/:userId", async (req: Request, res: Response) => {
+  return await UserController.getUser(req, res);
 });
 
 // add action to user
-userRouter.post('/:userId/actions', getUserMiddleware, async (req: Request, res: Response) => {
+userRouter.post(
+  "/:userId/actions",
+  getUserMiddleware,
+  async (req: Request, res: Response) => {
     return await UserController.addActionUser(req, res);
-});
+  }
+);
 
 export default userRouter;
