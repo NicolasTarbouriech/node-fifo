@@ -1,9 +1,10 @@
 import { Document } from "mongodb";
 import { Model } from "mongoose";
-import { IUser } from "./user.interface";
+import { IUser } from "../../user/interface/user.interface";
+import { TypeAction } from "../../../type/action.type";
 
 export interface IAction extends Document {
-  type: 'A' | 'B' | 'C';
+  type: TypeAction;
   credits: Number;
   createdAt?: Date;
   updatedAt?: Date;

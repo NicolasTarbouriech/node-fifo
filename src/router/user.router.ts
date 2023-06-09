@@ -6,34 +6,17 @@ const userRouter = Router();
 
 // create new user
 userRouter.post('/create', async (req: Request, res: Response) => {
-  try {
-    const user = await UserController.createUser(req.body);
-    res.json(user);
-  } catch (error) {
-    console.error('Error creating user:', error);
-    res.status(500).json({message: 'Internal server error'});
-  }
+   return  await UserController.createUser(req.body, res);
 });
 
 // retrieve user
 userRouter.get('/:userId', async (req: Request, res: Response) => {
-  try {
-    const user = await UserController.getUser(req);
-    res.json(user);
-  } catch (error) {
-    console.error('Error creating user:', error);
-    res.status(500).json({message: 'Internal server error'});
-  }
+    return await UserController.getUser(req, res);
 });
 
 // add action to user
 userRouter.post('/:userId/actions', getUserMiddleware, async (req: Request, res: Response) => {
-  try {
     return await UserController.addActionUser(req, res);
-  } catch (error) {
-    console.error('Error adding action to user', error);
-    res.status(500).json({message: 'Internal server error'})
-  }
 });
 
 export default userRouter;

@@ -1,5 +1,5 @@
 import { Document } from "mongodb";
-import { IAction } from "./action.interface";
+import { IAction } from "../../action/interface/action.interface";
 
 export interface IUser extends Document {
   id: string;
@@ -7,6 +7,7 @@ export interface IUser extends Document {
   credits: {
     [key: string]: number;
   };
-  lastUpdatedAt: Date;
   queue: IAction[];
+  createdAt?: Date;
+  updatedAt?: Date;
 }

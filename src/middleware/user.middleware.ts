@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { IUser } from "../interface/user.interface";
 import { model } from "mongoose";
-import userSchema from "../model/user.model";
+import userSchema from "../entity/user/model/user.model";
+import { IUser } from "../entity/user/interface/user.interface";
 
 export async function getUserMiddleware(req: Request, res: Response, next: Function) {
   const User = model<IUser>('User', userSchema);

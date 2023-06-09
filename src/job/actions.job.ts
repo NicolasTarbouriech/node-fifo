@@ -1,11 +1,11 @@
-import { IAction } from "../interface/action.interface";
-import { model } from "mongoose";
-import { IUser } from "../interface/user.interface";
-import userSchema from "../model/user.model";
-import actionSchema from "../model/action.model";
 import { CronJob } from 'cron';
+import { model } from "mongoose";
+import { IUser } from "../entity/user/interface/user.interface";
+import actionSchema from "../entity/action/model/action.model";
+import { IAction } from "../entity/action/interface/action.interface";
+import userSchema from "../entity/user/model/user.model";
 
-const job = new CronJob('*/2 * * * * ', async () => {
+const job = new CronJob('*/1 * * * * ', async () => {
   try {
     const User = model<IUser>('User', userSchema);
     const Action = model<IAction>('Actions', actionSchema);
@@ -25,8 +25,7 @@ const job = new CronJob('*/2 * * * * ', async () => {
             $set:
               {
                 credits: user.credits,
-                queue: user.queue,
-                lastUpdatedAt: new Date()
+                queue: user.queue
               }
           });
       }

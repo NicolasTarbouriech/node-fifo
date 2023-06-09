@@ -14,10 +14,6 @@ const userSchema = new Schema<IUser>({
     type: Schema.Types.Mixed,
     required: true,
   },
-  lastUpdatedAt: {
-    type: Date,
-    required: true,
-  },
   queue: [
     {
       type: Schema.Types.ObjectId,
@@ -25,6 +21,8 @@ const userSchema = new Schema<IUser>({
       default: []
     },
   ],
+}, {
+  timestamps: true
 });
 
 export default userSchema;
