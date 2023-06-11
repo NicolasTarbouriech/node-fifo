@@ -19,3 +19,9 @@ export async function addActionToUser(type: string, user: IUser) {
 
   return action;
 }
+
+export async function findActionByIdAndDelete(action: IAction) {
+  const Action = model<IAction>("Actions", actionSchema);
+
+  return Action.findByIdAndDelete(action._id);
+}

@@ -21,9 +21,30 @@ export async function postUser(postedData: PostUser) {
   const User = model<IUser>("User", userSchema);
 
   return new User({
-    id: String(Math.floor(Math.random() * 42)),
     email: postedData.email,
     credits: {},
     queue: [],
   });
+}
+
+export async function retrieveUserWithQueues() {
+  const User = model<IUser>("User", userSchema);
+
+  return User.find().populate("queue");
+}
+
+export async function findAndUpdateUser(user: any) {
+  const User = model<IUser>("User", userSchema);
+  
+  return User.findOneAndUpdate(
+    {
+      _id: user._id,
+    },
+    {
+      $set: {
+        credits: user.credits,
+        queue: user.queue,
+      },
+    }
+  );
 }
