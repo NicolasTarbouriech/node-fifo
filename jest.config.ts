@@ -5,5 +5,5 @@ module.exports = {
     '^.+\\.jsx?$': 'babel-jest',
   },
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
-  preset: "@shelf/jest-mongodb"
+  preset: 'ts-jest',
 };
