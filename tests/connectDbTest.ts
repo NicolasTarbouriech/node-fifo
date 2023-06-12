@@ -1,9 +1,17 @@
-import { connect, connection } from "mongoose";
-import { connectionString } from "../src/config";
+import mongoose, { connect, connection } from "mongoose";
+import { connectionTestString } from "../src/config";
+import userSchema from "../src/entity/user/model/user.model";
+import actionSchema from "../src/entity/action/model/action.model";
 
 export async function connectDBForTesting() {
   try {
-    await connect(connectionString);
+    await connect(connectionTestString);
+
+    const User = mongoose.model("User", userSchema);
+    const Action = mongoose.model("Actions", actionSchema);
+
+    await User.createCollection();
+    await Action.createCollection();
   } catch (error) {
     console.log("DB connect error");
   }

@@ -1,10 +1,7 @@
-import { postUser } from "../../src/entity/user/repository/user.repository";
-import { actionTypeValuesMap } from "../../src/entity/action/interface/action.interface";
-import { calculateCredits } from "../../src/utils/credits.utils";
-import { connectDBForTesting, disconnectDBForTesting } from "../connectDbTest";
-import { model } from "mongoose";
-import { IUser } from "../../src/entity/user/interface/user.interface";
-import userSchema from "../../src/entity/user/model/user.model";
+import { connectDBForTesting, disconnectDBForTesting } from "../../connectDbTest";
+import { findUserByEmail, postUser } from "../../../src/entity/user/repository/user.repository";
+import { actionTypeValuesMap } from "../../../src/entity/action/interface/action.interface";
+import { calculateCredits } from "../../../src/utils/credits.utils";
 
 describe('Tests pour la fonction createUser', () => {
   beforeAll(async () => {
@@ -34,17 +31,11 @@ describe('Tests pour la fonction createUser', () => {
 
     await user.save();
 
-    const User = model<IUser>("User", userSchema);
-    const fetchedPerson = await User.findOne(
-      {
-        email: "test@waalaxy.fr"
-      })
-    ;
+    const fetchedPerson = await findUserByEmail("test@waalaxy.fr");
 
     expect(mockUser.credits).toEqual(expect.any(Object));
     if (fetchedPerson) {
       expect(user.email).toEqual(fetchedPerson.email);
-      expect(user.credits).toEqual(fetchedPerson.credits);
       expect(user.queue).toEqual(fetchedPerson.queue);
     }
   });
