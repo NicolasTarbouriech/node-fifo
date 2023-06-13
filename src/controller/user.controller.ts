@@ -36,7 +36,7 @@ export class UserController {
 
   static async getUser(req: Request, res: Response) {
     try {
-      const user = findUserById(req.params.userId);
+      const user = await findUserById(req.params.userId);
       return res.json(user);
     } catch (error) {
       console.error("Error adding action to user", error);
