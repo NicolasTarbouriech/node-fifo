@@ -25,3 +25,8 @@ export async function findActionByIdAndDelete(action: IAction) {
 
   return Action.findByIdAndDelete(action._id);
 }
+
+export async function findActionsByUserId(userId: string) {
+  const Action = model<IAction>("Actions", actionSchema);
+  return Action.find({owner: userId});
+}
