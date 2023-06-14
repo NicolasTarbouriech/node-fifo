@@ -1,8 +1,9 @@
 import { findAndUpdateUser, retrieveUserWithQueues } from "../../entity/user/repository/user.repository";
 import { IAction } from "../../entity/action/interface/action.interface";
 import { findActionByIdAndDelete } from "../../entity/action/repository/action.repository";
+import { Server } from 'socket.io';
 
-export async function deleteActionUsers() {
+export async function deleteActionUsers(io: Server)   {
   const users = await retrieveUserWithQueues();
 
   for (const user of users) {
@@ -12,6 +13,8 @@ export async function deleteActionUsers() {
 
       user.credits[action.type]--;
       await findAndUpdateUser(user);
+
+      io.emit('actionDeleted');
     }
   }
 }

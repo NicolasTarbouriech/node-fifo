@@ -1,12 +1,15 @@
 import { CronJob } from "cron";
 import { deleteActionUsers } from "../service/user/user.service";
+import { Server } from "socket.io";
 
-const job = new CronJob("*/1 * * * * ", async () => {
-  try {
-    await deleteActionUsers();
-  } catch (error) {
-    console.error("Error executing cron job:", error);
-  }
-});
+export function startCronJob(io: Server) {
+  const job = new CronJob("*/1 * * * * ", async () => {
+    try {
+      await deleteActionUsers(io);
+    } catch (error) {
+      console.error("Error executing cron job:", error);
+    }
+  });
 
-export default job;
+  job.start();
+}
