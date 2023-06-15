@@ -9,6 +9,7 @@ import { calculateCredits } from "../utils/credits.utils";
 import { addActionToUser } from "../entity/action/repository/action.repository";
 import { actionTypeValuesMap } from "../entity/action/interface/action.interface";
 import { PostUser } from "../entity/user/type/user.type";
+import { HttpInternalServerError } from "../utils/httpError.util";
 
 export class UserController {
   static async createUser(postedData: PostUser, res: Response) {
@@ -22,7 +23,7 @@ export class UserController {
       const isUser = await findUserByEmail(postedData.email);
 
       if (isUser) {
-        throw new Error("user already exists");
+        throw HttpInternalServerError("user already exists");
       }
 
       await user.save();
