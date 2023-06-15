@@ -18,6 +18,10 @@ const userSchema = new Schema<IUser>(
         default: [],
       },
     ],
+    lastActionDeletedAt: {
+      type: Date,
+      default: null
+    }
   },
   {
     timestamps: true,

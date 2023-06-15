@@ -10,7 +10,10 @@ userRouter.post("/create", async (req: Request, res: Response) => {
 });
 
 // retrieve user
-userRouter.get("/:userId", async (req: Request, res: Response) => {
+userRouter.get(
+  "/:userId",
+  getUserMiddleware,
+  async (req: Request, res: Response) => {
   return await UserController.getUser(req, res);
 });
 

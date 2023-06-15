@@ -7,6 +7,7 @@ export interface IUser extends Document {
     [key: string]: number;
   };
   queue: IAction[];
+  lastActionDeletedAt?: Date;
   createdAt?: Date;
   updatedAt?: Date;
 }

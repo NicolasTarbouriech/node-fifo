@@ -44,6 +44,7 @@ export async function findAndUpdateUser(user: any) {
       $set: {
         credits: user.credits,
         queue: user.queue,
+        lastActionDeletedAt: user.lastActionDeletedAt
       },
     }
   );
