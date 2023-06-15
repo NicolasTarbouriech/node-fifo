@@ -1,6 +1,6 @@
 import { CronJob } from "cron";
-import { deleteActionUsers } from "../service/user/user.service";
 import { Server } from "socket.io";
+import { deleteActionUsers } from "../service/user.service";
 
 export function startCronJob(io: Server) {
   const job = new CronJob("*/1 * * * * ", async () => {

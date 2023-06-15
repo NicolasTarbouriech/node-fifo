@@ -1,8 +1,8 @@
-import { findAndUpdateUser, retrieveUserWithQueues } from "../../entity/user/repository/user.repository";
-import { actionTypeValuesMap, IAction } from "../../entity/action/interface/action.interface";
-import { findActionByIdAndDelete } from "../../entity/action/repository/action.repository";
+import { calculateCredits } from "../utils/credits.utils";
+import { actionTypeValuesMap, IAction } from "../entity/action/interface/action.interface";
+import { findAndUpdateUser, retrieveUserWithQueues } from "../entity/user/repository/user.repository";
+import { findActionByIdAndDelete } from "../entity/action/repository/action.repository";
 import { Server } from 'socket.io';
-import { calculateCredits } from "../../utils/credits.utils";
 
 export async function deleteActionUsers(io: Server)   {
   const users = await retrieveUserWithQueues();

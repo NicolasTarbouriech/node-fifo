@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 import { UserController } from "../controller/user.controller";
-import { getUserMiddleware } from "../middleware/user.middleware";
+import { authenticateJWT } from "../middleware/auth.middleware";
 
 const userRouter = Router();
 
@@ -12,7 +12,7 @@ userRouter.post("/create", async (req: Request, res: Response) => {
 // retrieve user
 userRouter.get(
   "/:userId",
-  getUserMiddleware,
+  authenticateJWT,
   async (req: Request, res: Response) => {
   return await UserController.getUser(req, res);
 });
@@ -20,7 +20,7 @@ userRouter.get(
 // add action to user
 userRouter.post(
   "/:userId/actions",
-  getUserMiddleware,
+  authenticateJWT,
   async (req: Request, res: Response) => {
     return await UserController.addActionUser(req, res);
   }
