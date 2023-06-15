@@ -15,6 +15,7 @@ export async function deleteActionUsers(io: Server)   {
       await findAndUpdateUser(user);
 
       io.emit('actionDeleted');
+      console.log('action successfully deleted !');
     }
   }
 }

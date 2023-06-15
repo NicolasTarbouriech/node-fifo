@@ -1,7 +1,8 @@
-import { connectDBForTesting, disconnectDBForTesting } from "../../connectDbTest";
+
 import { findUserByEmail, postUser } from "../../../src/entity/user/repository/user.repository";
 import { actionTypeValuesMap } from "../../../src/entity/action/interface/action.interface";
 import { calculateCredits } from "../../../src/utils/credits.utils";
+import { connectDBForTesting, disconnectDBForTesting } from "../../connectDbTest";
 
 describe('Tests pour la fonction createUser', () => {
   beforeAll(async () => {

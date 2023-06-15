@@ -13,10 +13,10 @@ app.use(express.json());
 app.use(router);
 
 io.on('connection', (socket) => {
-  console.log('connection socket working !')
+  console.log('connection socket working !', socket.id)
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   run().catch(console.dir);
   console.log(`Server listening on ${PORT}`);
 });
