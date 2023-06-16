@@ -47,18 +47,19 @@ export class UserController {
 
   static async addActionUser(req: Request, res: Response) {
     try {
-      const user: IUser = req.body.user;
+      const user: IUser = res.locals.user;
       const { type } = req.body;
 
       if (!["A", "B", "C"].includes(type)) {
         return res.status(400).json({ message: "Invalid action type" });
       }
 
-      const action = await addActionToUser(type, user);
+      const action = await addActionToUser(type, user._id);
 
       return res.json(action);
     } catch (error) {
       console.error("Error adding action to user", error);
+      console.log(error);
       res.status(500).json({ message: "Internal server error" });
     }
   }

@@ -14,8 +14,9 @@ userRouter.get(
   "/:userId",
   authenticateJWT,
   async (req: Request, res: Response) => {
-  return await UserController.getUser(req, res);
-});
+    return await UserController.getUser(req, res);
+  }
+);
 
 // add action to user
 userRouter.post(

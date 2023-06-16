@@ -2,14 +2,14 @@ import { HttpUnauthorizedError } from "../utils/httpError.util";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { NextFunction, Request, Response } from "express";
 
-function verify(headers: Request['headers']) {
+function verify(headers: Request["headers"]) {
   const { authorization } = headers;
 
   if (!authorization) {
-    throw HttpUnauthorizedError('No header Authorization');
+    throw HttpUnauthorizedError("No header Authorization");
   }
 
-  const token = authorization.replace('Bearer ', '');
+  const token = authorization.replace("Bearer ", "");
 
   try {
     return jwt.verify(
@@ -17,7 +17,7 @@ function verify(headers: Request['headers']) {
       process.env.JWT_SECRET_KEY as string
     ) as JwtPayload;
   } catch (e) {
-    throw HttpUnauthorizedError('Invalid token');
+    throw HttpUnauthorizedError("Invalid token");
   }
 }
 

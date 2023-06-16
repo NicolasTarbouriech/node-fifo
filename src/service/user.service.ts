@@ -1,10 +1,16 @@
 import { calculateCredits } from "../utils/credits.utils";
-import { actionTypeValuesMap, IAction } from "../entity/action/interface/action.interface";
-import { findAndUpdateUser, retrieveUserWithQueues } from "../entity/user/repository/user.repository";
+import {
+  actionTypeValuesMap,
+  IAction,
+} from "../entity/action/interface/action.interface";
+import {
+  findAndUpdateUser,
+  retrieveUserWithQueues,
+} from "../entity/user/repository/user.repository";
 import { findActionByIdAndDelete } from "../entity/action/repository/action.repository";
-import { Server } from 'socket.io';
+import { Server } from "socket.io";
 
-export async function deleteActionUsers(io: Server)   {
+export async function deleteActionUsers(io: Server) {
   const users = await retrieveUserWithQueues();
 
   for (const user of users) {
@@ -27,8 +33,8 @@ export async function deleteActionUsers(io: Server)   {
       user.lastActionDeletedAt = Date.now();
       await findAndUpdateUser(user);
 
-      io.emit('actionDeleted');
-      console.log('action successfully deleted !');
+      io.emit("actionDeleted");
+      console.log("action successfully deleted !");
     }
   }
 }

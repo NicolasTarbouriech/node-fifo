@@ -35,7 +35,7 @@ export async function retrieveUserWithQueues() {
 
 export async function findAndUpdateUser(user: any) {
   const User = model<IUser>("User", userSchema);
-  
+
   return User.findOneAndUpdate(
     {
       _id: user._id,
@@ -44,7 +44,7 @@ export async function findAndUpdateUser(user: any) {
       $set: {
         credits: user.credits,
         queue: user.queue,
-        lastActionDeletedAt: user.lastActionDeletedAt
+        lastActionDeletedAt: user.lastActionDeletedAt,
       },
     }
   );

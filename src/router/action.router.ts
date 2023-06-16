@@ -9,7 +9,8 @@ actionRouter.get(
   "/:userId",
   authenticateJWT,
   async (req: Request, res: Response) => {
-  return await ActionController.getActions(req, res);
-});
+    return await ActionController.getActions(req, res);
+  }
+);
 
 export default actionRouter;

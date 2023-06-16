@@ -20,8 +20,8 @@ const userSchema = new Schema<IUser>(
     ],
     lastActionDeletedAt: {
       type: Date,
-      default: null
-    }
+      default: null,
+    },
   },
   {
     timestamps: true,

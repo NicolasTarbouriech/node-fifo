@@ -2,9 +2,18 @@ import { model } from "mongoose";
 import { ActionTypes, IAction } from "../interface/action.interface";
 import actionSchema from "../model/action.model";
 import { IUser } from "../../user/interface/user.interface";
+import userSchema from "../../user/model/user.model";
+import { HttpNotFoundError } from "../../../utils/httpError.util";
 
-export async function addActionToUser(type: string, user: IUser) {
+export async function addActionToUser(type: string, userId: string) {
   const Action = model<IAction>("Actions", actionSchema);
+  const User = model<IUser>("User", userSchema);
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    throw HttpNotFoundError("user not found in base");
+  }
 
   const action = new Action({
     type: type as ActionTypes,
@@ -28,5 +37,5 @@ export async function findActionByIdAndDelete(action: IAction) {
 
 export async function findActionsByUserId(userId: string) {
   const Action = model<IAction>("Actions", actionSchema);
-  return Action.find({owner: userId});
+  return Action.find({ owner: userId });
 }

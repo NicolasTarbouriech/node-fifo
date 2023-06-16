@@ -4,12 +4,12 @@ import { AuthController } from "../controller/auth.controller";
 const authRouter = Router();
 
 authRouter.post(
-  '/sign-in',
+  "/sign-in",
   async (req: Request, res: Response, next: NextFunction) => {
     AuthController.signIn(req.body)
       .then((data) => {
         res.json({
-          accessToken: data.accessToken
+          accessToken: data.accessToken,
         });
       })
       .catch(next);

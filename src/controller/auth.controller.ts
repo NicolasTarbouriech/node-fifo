@@ -1,4 +1,7 @@
-import { HttpInternalServerError, HttpNotFoundError } from "../utils/httpError.util";
+import {
+  HttpInternalServerError,
+  HttpNotFoundError,
+} from "../utils/httpError.util";
 import { AuthToken, SignInRequest } from "../entity/user/type/user.type";
 import { signIn } from "../service/auth.service";
 import { findUserByEmail } from "../entity/user/repository/user.repository";
@@ -10,7 +13,7 @@ export class AuthController {
         const user = await findUserByEmail(body.email);
 
         if (!user) {
-          throw HttpNotFoundError('User not found in base');
+          throw HttpNotFoundError("User not found in base");
         }
 
         return {
@@ -18,7 +21,7 @@ export class AuthController {
         };
       })
       .catch((e: Error) => {
-        throw HttpInternalServerError(e.message ?? 'Internal server error');
+        throw HttpInternalServerError(e.message ?? "Internal server error");
       });
   }
 }
