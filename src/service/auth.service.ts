@@ -1,14 +1,14 @@
 import jwt from "jsonwebtoken";
-import { IUser } from "../entity/user/interface/user.interface";
-import { model } from "mongoose";
-import userSchema from "../entity/user/model/user.model";
 import { jwtSecret } from "../config";
+import { findUserByEmail } from "../entity/user/repository/user.repository";
+import { HttpNotFoundError } from "../utils/httpError.util";
 
 export async function signIn(email: string): Promise<string> {
-  const User = model<IUser>("User", userSchema);
-  const user = await User.findOne({
-    email: email,
-  });
+  const user = await findUserByEmail(email);
+
+  if (!user) {
+    throw HttpNotFoundError("User not found in base");
+  }
 
   return new Promise<string>((resolve, reject) => {
     try {

@@ -1,5 +1,6 @@
 import { Document } from "mongodb";
 import { IAction } from "../../action/interface/action.interface";
+import { Model } from "mongoose";
 
 export interface IUser extends Document {
   email: string;
@@ -11,3 +12,5 @@ export interface IUser extends Document {
   createdAt?: Date;
   updatedAt?: Date;
 }
+
+export interface IUserModel extends Model<IUser> {}

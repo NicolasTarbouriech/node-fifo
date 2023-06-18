@@ -4,11 +4,6 @@ import { authenticateJWT } from "../middleware/auth.middleware";
 
 const userRouter = Router();
 
-// create new user
-userRouter.post("/create", async (req: Request, res: Response) => {
-  return await UserController.createUser(req.body, res);
-});
-
 // retrieve user
 userRouter.get(
   "/:userId",
