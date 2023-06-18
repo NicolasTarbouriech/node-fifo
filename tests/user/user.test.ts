@@ -11,6 +11,22 @@ describe('UserController tests', () => {
     await disconnectDBForTesting();
   });
 
+  it('Get user', async () => {
+    const mockUser = {
+      email: "test@example.com",
+      credits: {},
+      queue: []
+    };
+
+    const user = await findUserByEmail("test@example.com");
+
+    expect(mockUser.email).toEqual(user.email);
+  });
+  it('get user dont exist', async () => {
+    const user = await findUserByEmail("test-no-exist@example.com");
+
+    expect(user).toBeNull();
+  });
   it('Add actions to user', async () => {
     const postedData = {
       type: "B"
@@ -38,21 +54,5 @@ describe('UserController tests', () => {
     await user.save();
 
     expect(action.owner).toEqual(user);
-  });
-  it('Get user', async () => {
-    const mockUser = {
-      email: "test@example.com",
-      credits: {},
-      queue: []
-    };
-
-    const user = await findUserByEmail("test@example.com");
-
-    expect(mockUser.email).toEqual(user.email);
-  });
-  it('get user dont exist', async () => {
-    const user = await findUserByEmail("test-no-exist@example.com");
-
-    expect(user).toBeNull();
   });
 });

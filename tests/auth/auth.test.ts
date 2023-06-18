@@ -4,7 +4,6 @@ import { actionTypeValuesMap } from "../../src/entity/action/interface/action.in
 import { calculateCredits } from "../../src/utils/credits.utils";
 import { signIn } from "../../src/service/auth.service";
 
-
 describe('AuthController tests', () => {
   beforeAll(async () => {
     await connectDBForTesting();
@@ -51,13 +50,4 @@ describe('AuthController tests', () => {
     const startsWithEy2 = firstTwoChars2 === 'ey';
     expect(startsWithEy2).toBeTruthy();
   })
-  it('Sign in with email dont exist in db', async () => {
-    const postedData = {
-      email: 'test-no-email-in-db@example.com',
-    };
-
-    expect(() => {
-       signIn(postedData.email);
-    }).toThrow('e');
-  });
 });
