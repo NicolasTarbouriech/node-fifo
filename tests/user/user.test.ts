@@ -13,12 +13,12 @@ describe('UserController tests', () => {
 
   it('Get user', async () => {
     const mockUser = {
-      email: "test@example.com",
+      email: "testAuth@example.com",
       credits: {},
       queue: []
     };
 
-    const user = await findUserByEmail("test@example.com");
+    const user = await findUserByEmail("testAuth@example.com");
 
     expect(mockUser.email).toEqual(user.email);
   });
@@ -33,14 +33,14 @@ describe('UserController tests', () => {
     }
 
     const mockUser = {
-      email: "test@example.com",
+      email: "testAuth@example.com",
       credits: {},
       queue: []
     };
 
     await postUser(mockUser);
 
-    const user = await findUserByEmail("test@example.com");
+    const user = await findUserByEmail("testAuth@example.com");
 
     const action = new Action({
       type: postedData.type,

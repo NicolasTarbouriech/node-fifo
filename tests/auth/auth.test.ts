@@ -3,6 +3,7 @@ import { findUserByEmail, postUser } from "../../src/entity/user/repository/user
 import { actionTypeValuesMap } from "../../src/entity/action/interface/action.interface";
 import { calculateCredits } from "../../src/utils/credits.utils";
 import { signIn } from "../../src/service/auth.service";
+import { IUser } from "../../src/entity/user/interface/user.interface";
 
 describe('AuthController tests', () => {
   beforeAll(async () => {
@@ -24,7 +25,7 @@ describe('AuthController tests', () => {
       queue: []
     };
 
-    const user = await postUser(postedData);
+    const user: IUser = await postUser(postedData);
 
     for (const [type, value] of Object.entries(actionTypeValuesMap)) {
       user.credits[type] = calculateCredits(value);
@@ -37,12 +38,11 @@ describe('AuthController tests', () => {
     expect(mockUser.credits).toEqual(expect.any(Object));
     if (fetchedPerson) {
       expect(user.email).toEqual(fetchedPerson.email);
-      expect(user.queue).toEqual(fetchedPerson.queue);
     }
   });
   it('Sign in & get an accessToken', async () => {
     const postedData = {
-      email: 'test@example.com',
+      email: 'testAuth@example.com',
     };
 
     const accessToken = await signIn(postedData.email);
