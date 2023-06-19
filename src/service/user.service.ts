@@ -15,7 +15,7 @@ export async function deleteActionUsers(io: Server) {
 
   for (const user of users) {
     const currentTime = Date.now();
-    const lastActionDeletedTime = user.lastActionDeletedAt || 0;
+    const lastActionDeletedTime = user.lastActionDeletedAt?.getTime() || 0;
     const elapsedTime = currentTime - lastActionDeletedTime;
 
     if (elapsedTime >= 24 * 60 * 60 * 1000) {
@@ -30,7 +30,7 @@ export async function deleteActionUsers(io: Server) {
       await findActionByIdAndDelete(action._id);
 
       user.credits[action.type]--;
-      user.lastActionDeletedAt = Date.now();
+      user.lastActionDeletedAt = new Date();
       await findAndUpdateUser(user);
 
       io.emit("actionDeleted");

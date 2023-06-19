@@ -7,6 +7,7 @@ import { findUserByEmail, postUser } from "../entity/user/repository/user.reposi
 import { Response } from "express";
 import { actionTypeValuesMap } from "../entity/action/interface/action.interface";
 import { calculateCredits } from "../utils/credits.utils";
+import { IUser } from "../entity/user/interface/user.interface";
 
 export class AuthController {
   static signIn(body: SignInRequest): Promise<AuthToken> {
@@ -23,7 +24,7 @@ export class AuthController {
 
   static async signUp(postedData: PostUser, res: Response) {
     try {
-      const user = await postUser(postedData);
+      const user: IUser = await postUser(postedData);
 
       for (const [type, value] of Object.entries(actionTypeValuesMap)) {
         user.credits[type] = calculateCredits(value);
