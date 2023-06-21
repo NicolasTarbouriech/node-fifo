@@ -1,5 +1,4 @@
-# Your Application Name
-Fifo web app
+# Fifo web app
 
 ## Running the Application
 To run the application, use the following command:
@@ -27,8 +26,6 @@ To run the tests, use the following command:
   - Password: vNXBObWAlXbs00Kv
   - DB Name: fifo-test
 
-Enjoy your time! :)
-
 
 ## Context
 - All the queue is managed by a cron & web-socket to communicate to the front-end.
@@ -39,3 +36,5 @@ Enjoy your time! :)
 
 ## Why not using BullMQ ?!
 I discovered bullMQ library but after writing all my back code so it was too late to refacto all of my code with this lib.
+
+Enjoy your time! :)
