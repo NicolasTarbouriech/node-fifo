@@ -1,10 +1,7 @@
 import { Request, Response } from "express";
-import {
-  findUserById,
-} from "../entity/user/repository/user.repository";
+import { findUserById } from "../entity/user/repository/user.repository";
 import { IUser } from "../entity/user/interface/user.interface";
 import { addActionToUser } from "../entity/action/repository/action.repository";
-
 
 export class UserController {
   static async getUser(req: Request, res: Response) {

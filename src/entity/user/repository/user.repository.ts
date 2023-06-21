@@ -3,10 +3,9 @@ import User from "../model/user.model";
 import { IUser } from "../interface/user.interface";
 
 export async function findUserByEmail(email: string): Promise<IUser> {
-  return User.findOne(
-    {
-      email
-    });
+  return User.findOne({
+    email,
+  });
 }
 
 export async function findUserById(userId: string): Promise<IUser> {

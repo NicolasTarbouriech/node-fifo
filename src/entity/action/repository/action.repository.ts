@@ -4,7 +4,10 @@ import Action from "../model/action.model";
 import User from "../../user/model/user.model";
 import { IUser } from "../../user/interface/user.interface";
 
-export async function addActionToUser(type: string, userId: string): Promise<IAction> {
+export async function addActionToUser(
+  type: string,
+  userId: string
+): Promise<IAction> {
   const user: IUser = await User.findById(userId);
 
   if (!user) {
