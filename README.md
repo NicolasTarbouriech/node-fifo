@@ -1,20 +1,32 @@
-Run application with "npm run start"
-Run tests with "npm run test"
+# Your Application Name
+Fifo web app
 
-Mongodb connection :
-  -app database: 
-    -url: mongodb+srv://atlascluster.1eln5es.mongodb.net/fifo-db?retryWrites=true&w=majority
-    -host: atlascluster.1eln5es.mongodb.net
-    Authentication user & password: 
-      -user: mongodb-user
-      -password: vNXBObWAlXbs00Kv
-      -db-name: fifo-db
-  -test database: 
-    -url: mongodb+srv://atlascluster.1eln5es.mongodb.net/fifo-test?retryWrites=true&w=majority
-    -host: atlascluster.1eln5es.mongodb.net
-    Authentication user & password: 
-      -user: mongodb-user
-      -password: vNXBObWAlXbs00Kv
-      -db-name: fifo-test
+## Running the Application
+To run the application, use the following command:
+npm run start
 
-Enjoy your time ! :)
+## Running Tests
+To run the tests, use the following command:
+npm run test
+
+
+## MongoDB Connection
+### App Database
+- URL: mongodb+srv://atlascluster.1eln5es.mongodb.net/fifo-db?retryWrites=true&w=majority
+- Host: atlascluster.1eln5es.mongodb.net
+- Authentication User & Password:
+  - User: mongodb-user
+  - Password: vNXBObWAlXbs00Kv
+  - DB Name: fifo-db
+
+### Test Database
+- URL: mongodb+srv://atlascluster.1eln5es.mongodb.net/fifo-test?retryWrites=true&w=majority
+- Host: atlascluster.1eln5es.mongodb.net
+- Authentication User & Password:
+  - User: mongodb-user
+  - Password: vNXBObWAlXbs00Kv
+  - DB Name: fifo-test
+
+Enjoy your time! :)
+
+
