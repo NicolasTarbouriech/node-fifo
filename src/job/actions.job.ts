@@ -3,7 +3,7 @@ import { Server } from "socket.io";
 import { deleteActionUsers } from "../service/user.service";
 
 export function startCronJob(io: Server) {
-  const job = new CronJob("*/1 * * * * ", async () => {
+  const job = new CronJob("*/2 * * * * ", async () => {
     try {
       await deleteActionUsers(io);
     } catch (error) {
