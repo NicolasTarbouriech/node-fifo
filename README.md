@@ -31,9 +31,9 @@ Enjoy your time! :)
 
 
 ## Context
-- All the queue is managed by a cron & web-socket.
+- All the queue is managed by a cron & web-socket to communicate to the front-end.
 - That was my first time with mongodb / mongoose / jest :) (was working with postgreSQL & typeORM)
-- 
+
 ## Technos
 - All tests are made with jest & ts-jest
 
