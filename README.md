@@ -3,11 +3,11 @@ Fifo web app
 
 ## Running the Application
 To run the application, use the following command:
-npm run start
+- npm run start
 
 ## Running Tests
 To run the tests, use the following command:
-npm run test
+- npm run test
 
 
 ## MongoDB Connection
@@ -30,3 +30,12 @@ npm run test
 Enjoy your time! :)
 
 
+## Context
+- All the queue is managed by a cron & web-socket.
+- That was my first time with mongodb / mongoose / jest :) (was working with postgreSQL & typeORM)
+- 
+## Technos
+- All tests are made with jest & ts-jest
+
+## Why not using BullMQ ?!
+I discovered bullMQ library but after writing all my back code so it was too late to refacto all of my code with this lib.
