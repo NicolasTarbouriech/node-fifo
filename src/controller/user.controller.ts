@@ -19,10 +19,6 @@ export class UserController {
       const user: IUser = res.locals.user;
       const { type } = req.body;
 
-      if (!["A", "B", "C"].includes(type)) {
-        return res.status(400).json({ message: "Invalid action type" });
-      }
-
       const action = await addActionToUser(type, user._id);
 
       return res.json(action);
