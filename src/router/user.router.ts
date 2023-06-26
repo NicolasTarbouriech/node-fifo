@@ -1,6 +1,7 @@
 import { Request, Response, Router } from "express";
 import { UserController } from "../controller/user.controller";
 import { authenticateJWT } from "../middleware/auth.middleware";
+import { validateType } from "../middleware/validator.middleware";
 
 const userRouter = Router();
 
@@ -16,6 +17,7 @@ userRouter.get(
 // add action to user
 userRouter.post(
   "/:userId/actions",
+  validateType,
   authenticateJWT,
   async (req: Request, res: Response) => {
     return await UserController.addActionUser(req, res);

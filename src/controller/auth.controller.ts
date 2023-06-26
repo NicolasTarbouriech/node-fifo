@@ -11,7 +11,7 @@ import {
 } from "../entity/user/repository/user.repository";
 import { Response } from "express";
 import { actionTypeValuesMap } from "../entity/action/interface/action.interface";
-import { calculateCredits } from "../utils/credits.utils";
+import { calculateCredits } from "../utils/credits.util";
 import { IUser } from "../entity/user/interface/user.interface";
 
 export class AuthController {

@@ -1,4 +1,4 @@
-import { calculateCredits } from "../../src/utils/credits.utils";
+import { calculateCredits } from "../../src/utils/credits.util";
 
 describe('Calculate credits', () => {
   it('Test if calculate credits working', async () => {

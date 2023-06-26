@@ -1,4 +1,4 @@
-import { calculateCredits } from "../utils/credits.utils";
+import { calculateCredits } from "../utils/credits.util";
 import {
   actionTypeValuesMap,
   IAction,

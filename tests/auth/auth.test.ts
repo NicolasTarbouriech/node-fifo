@@ -1,7 +1,7 @@
 import { connectDBForTesting, disconnectDBForTesting } from "../connectDbTest";
 import { findUserByEmail, postUser } from "../../src/entity/user/repository/user.repository";
 import { actionTypeValuesMap } from "../../src/entity/action/interface/action.interface";
-import { calculateCredits } from "../../src/utils/credits.utils";
+import { calculateCredits } from "../../src/utils/credits.util";
 import { signIn } from "../../src/service/auth.service";
 import { IUser } from "../../src/entity/user/interface/user.interface";
 
