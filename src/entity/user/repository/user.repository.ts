@@ -26,7 +26,7 @@ export async function retrieveUserWithQueues(): Promise<IUser[]> {
   return User.find().populate("queue");
 }
 
-export async function findAndUpdateUser(user: any): Promise<IUser> {
+export async function findAndUpdateUser(user: IUser): Promise<IUser> {
   return User.findOneAndUpdate(
     {
       _id: user._id,

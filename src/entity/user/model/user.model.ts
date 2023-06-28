@@ -3,7 +3,7 @@ import { IUser, IUserModel } from "../interface/user.interface";
 
 class UserModel {
   private static instance: UserModel;
-  private userModel: IUserModel;
+  private readonly userModel: IUserModel;
 
   private constructor() {
     const userSchema = new Schema<IUser>(

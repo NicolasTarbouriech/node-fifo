@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import { jwtSecret } from "../config";
 import { findUserByEmail } from "../entity/user/repository/user.repository";
 import { HttpNotFoundError } from "../utils/httpError.util";
+import { IUser } from "../entity/user/interface/user.interface";
 
 export async function signIn(email: string): Promise<string> {
   const user = await findUserByEmail(email);
@@ -19,7 +20,7 @@ export async function signIn(email: string): Promise<string> {
   });
 }
 
-function jwtSign(user: any) {
+function jwtSign(user: IUser) {
   return jwt.sign(
     {
       user,

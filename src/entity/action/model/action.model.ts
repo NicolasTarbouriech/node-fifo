@@ -7,7 +7,7 @@ import {
 
 class ActionModel {
   private static instance: ActionModel;
-  private actionModel: IActionModel;
+  private readonly actionModel: IActionModel;
 
   private constructor() {
     const actionSchema = new Schema<IAction, IActionModel>(
